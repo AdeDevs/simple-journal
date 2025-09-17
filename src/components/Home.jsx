@@ -56,7 +56,7 @@ export default function HomePage() {
             // add new
             const newItem = { name, date, entry, id };
             setItems((prevItems) => [...prevItems, newItem]);
-            setId((prevId) => prevId + 1);
+            setId(Math.random);
         }
 
         // reset form
@@ -77,7 +77,7 @@ export default function HomePage() {
         setItems((prevItems) => prevItems.filter(item => item.id !== deleteId));
     };
 
-
+    
     return (
         <div className="parent">
 
