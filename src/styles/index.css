@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.parent {
+  background-color: #12121a;
+  color: #fff;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.card > h1 {
+  text-align: center;
+  width: 95%;
+  font-size: 20px;
+  margin: 10px auto 20px auto;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.navigation ul{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 15px;
+  font-size: 15px;
+  list-style-type: none;
+}
+.home {
+  font-size: 1em;
+  height: 100%;
+  margin-top: 30px;
+  text-align: center;
+}
+.home h1{
+  font-size: 1.5em;
+}
+.home p {
+  font-weight: 500;
+  font-size: 1em;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+}
+
+
+.load {
+  color: red;
+  display: none;
+}
+.load.active {
+  display: block;
+}
+
+.inputs form {
+  width: 80%;
+  margin: 0 auto 10px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #33333300;
+  border: 2px solid #ffffff68;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.inputs input, .inputs button, .inputs textarea {
+  font-family: inherit;
+  padding: 13px 15px;
+  width: 100%;
+  border: 2px solid #ffffff64;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-size: 14px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: all .3s ease-in-out;
+}
+.split {
+  display: flex;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+.inputs textarea {
+  height: 100px;
+  line-height: 20px;
+  text-transform: none;
+}
+.inputs input:focus, .inputs input:hover, .inputs button:hover {
+  border: 2px solid #ffffffa3;
+}
+.inputs button {
+  font-weight: 500;
+  background-color: #000;
+  text-transform: uppercase;
+  color: #fff;
+}
+.inputs button:hover {
+  background-color: #00ca00;
+  color: #000;
+  cursor: pointer;
+}
+
+.search {
+  padding: 13px;
+  background: linear-gradient(135deg, #000000, #468af0);
+  box-sizing: border-box; 
+  width: 80%;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: grid;
+  height: fit-content;
+  fill: 1;
+  overflow-y: auto;
+  scrollbar-width: 0;
+  grid-template-columns: repeat(2, 1fr);
+  border: 2px solid #00000026;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.search.active {
+  opacity: 1;
+  visibility: visible;
+}
+.results {
+  border: 2px solid #ffffff26;
+  background-color: #33333338;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 15px;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: left;
+}
+.results:hover .text {
+  color: #fff;
+}
+.results h1 {
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.text {
+  font-weight: 500;
+  color: #ffffff9f;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all .3s ease-in-out;
+}
+.date {
+  margin: 10px 0;
+  font-weight: 700;
+  font-size: 11px;
+}
+.results .btns {
+  display: flex;
+  width: fit-content;
+  margin-top: 10px;
+  gap: 20px;
+}
+.btns button {
+  padding: 10px 25px;
+  border: 2px solid #ffffff26;
+  background-color: #33333338;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.btns .edit:hover {
+  background-color: #00ca00;
+}
+.btns .del:hover {
+  background-color: red;
+}
+
+@media screen and (max-width: 750px) {
+  .inputs form, .search {
+    width: 100%;
+  }
+  .card {
+    padding: 10px;
+    margin: 0;
+  }
+  .user {
+    grid-template-columns: 1fr 1fr;
+    border: none;
+  } 
+  ul, .user {
+    border: none;
+  }
+}
+@media screen and (max-width: 750px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .split input {
+    align-self: flex-end;
+  }
+  .home, .card {
+    margin: 0;
+  }
+  .inputs form {
+    margin: 0 auto 10px auto;
+  }
+  .inputs form, .search {
+    width: 100%;
+  }
+  .search {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+}
