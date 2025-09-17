@@ -8,6 +8,7 @@
   height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
 }
 .card > h1 {
   text-align: center;
@@ -171,7 +172,7 @@
 }
 .results .btns {
   display: flex;
-  width: fit-content;
+  justify-content: space-between;
   margin-top: 10px;
   gap: 20px;
 }
@@ -189,12 +190,40 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all .3s ease-in-out;
+  z-index: 999;
 }
 .btns .edit:hover {
   background-color: #00ca00;
 }
 .btns .del:hover {
   background-color: red;
+}
+
+.dialogue {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px 25px;
+  border: 2px solid #ffffff26;
+  background-color: #0000009c;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all .2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.dialogue.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media screen and (max-width: 750px) {

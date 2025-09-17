@@ -2,9 +2,16 @@ import { useEffect, useMemo, useRef, useState } from "react"
 
 
 export default function HomePage() {
-    const handleDelete = (deleteId) => {
-        setItems((prevItems) => prevItems.filter(item => item.id !== deleteId));
+    const [dialogueId, setDialogueId] = useState(null);
+
+    const handleDialogue = (id) => {
+        setDialogueId(id); // open dialogue for this item
     };
+
+    const closeDialogue = () => {
+        setDialogueId(null); // close all dialogues
+    };
+
     const [id, setId] = useState(() => {
         const storedId = localStorage.getItem("id");
         return storedId ? JSON.parse(storedId) : 0; // start at 0 if none saved
@@ -66,11 +73,14 @@ export default function HomePage() {
         setEntry(item.entry);
         setEditId(item.id);
     };
+    const handleDelete = (deleteId) => {
+        setItems((prevItems) => prevItems.filter(item => item.id !== deleteId));
+    };
 
 
     return (
         <div className="parent">
-          
+
             <div className="card">
                 <h1>Mini Journal With CRUD</h1>
                 <div className="inputs">
@@ -90,14 +100,40 @@ export default function HomePage() {
                                 <h1>{item.name}</h1>
                                 <p className="text date">Entry made at {item.date}</p>
                                 <p className="text">{item.entry}</p>
+
+                                {dialogueId === item.id && (
+                                    <div className="dialogue active">
+                                        <h1>Are you sure?</h1>
+                                        <div className="btns">
+                                            <button
+                                                className="del"
+                                                onClick={() => {
+                                                    handleDelete(item.id);
+                                                    closeDialogue();
+                                                }}
+                                            >
+                                                Yes
+                                            </button>
+                                            <button className="edit" onClick={closeDialogue}>
+                                                No
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+
                                 <div className="btns">
-                                    <button className="del" onClick={() => handleDelete(item.id)}>Delete</button>
-                                    <button className="edit" onClick={() => handleEdit(item)}>Edit</button>
+                                    <button className="del" onClick={() => handleDialogue(item.id)}>
+                                        Delete
+                                    </button>
+                                    <button className="edit" onClick={() => handleEdit(item)}>
+                                        Edit
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 )}
+
             </div>
 
         </div>
